@@ -1,2 +1,2 @@
 # 咪咕音乐
-migu文件夹是咪咕音乐模拟登录，解析登录页面加密js代码，操作运行js代码处理密码加密，并发送请求。<br>
+[migu](https://github.com/ghxuan/login/tree/master/migu) 文件夹是咪咕音乐模拟登录，解析登录页面加密js代码，操作运行js代码处理密码加密，并发送请求。<br>

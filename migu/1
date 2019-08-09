@@ -1,0 +1,28 @@
+
+'Host': 'passport.migu.cn',
+'X-Requested-With': 'XMLHttpRequest',
+'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36',
+'Origin': 'https://passport.migu.cn',
+'Referer': 'https://passport.migu.cn/login',
+'Content-Type': 'application/x-www-form-urlencoded',
+
+'Content-Length': '303',
+
+
+'sourceID':'',
+'loginID':'',
+'enpassword':'',
+
+
+
+
+POST /authn HTTP/1.1
+Host: passport.migu.cn
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
+Origin: https://passport.migu.cn
+Referer: https://passport.migu.cn/login
+Content-Length: 303
+Content-Type: application/x-www-form-urlencoded
+
+sourceID=100001&loginID=15630402638&enpassword=643da6fbb87ea7ba04a998962fcb443890f7f2687e35d29cba014dc3779082e388f40c00cfc50f26557706a7eece3e32aefb19fe3a740a8302c18bcfc3d7a53b7b8f6404673aec8bda5dd29c463d9cd45e408eec12c3b1baafff6b399e58600c9fae17facb90d6b82a688c2a9d251af623935f09a91a7522ba6f1e8979667a4a

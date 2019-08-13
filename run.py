@@ -1,3 +1,3 @@
-from migu.login import login
+from fang.login import login
 
 login()

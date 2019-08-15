@@ -23,3 +23,7 @@ settings.py 密码等变量 <br>
 
 ## 一、咪咕音乐
 [migu](https://github.com/ghxuan/login/tree/master/migu) 文件夹是咪咕音乐模拟登录，解析登录页面加密js代码，操作运行js代码处理密码加密，并发送请求。
+
+## 二、房天下
+[fang](https://github.com/ghxuan/login/tree/master/fang) 文件夹是房天下模拟登录，解析登录页面加密js代码，操作运行js代码处理密码加密，并发送请求。<br>
+

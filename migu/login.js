@@ -21,9 +21,9 @@ function f(a, b, c, d, e, f) {
 
 function g(a, b, c, d, e, f) {
     for (var g = 32767 & b, h = b >> 15; --f >= 0;) {
-        var i = 32767 & this[a]
-            , j = this[a++] >> 15
-            , k = h * i + j * g;
+        var i = 32767 & this[a],
+            j = this[a++] >> 15,
+            k = h * i + j * g;
         i = g * i + ((32767 & k) << 15) + c[d] + (1073741823 & e),
             e = (i >>> 30) + (k >>> 15) + h * j + (e >>> 30),
             c[d++] = 1073741823 & i
@@ -33,9 +33,9 @@ function g(a, b, c, d, e, f) {
 
 function h(a, b, c, d, e, f) {
     for (var g = 16383 & b, h = b >> 14; --f >= 0;) {
-        var i = 16383 & this[a]
-            , j = this[a++] >> 14
-            , k = h * i + j * g;
+        var i = 16383 & this[a],
+            j = this[a++] >> 14,
+            k = h * i + j * g;
         i = g * i + ((16383 & k) << 14) + c[d] + e,
             e = (i >> 28) + (k >> 14) + h * j,
             c[d++] = 268435455 & i
@@ -99,7 +99,7 @@ function n(a, b) {
             g >= this.DB && (g -= this.DB))
     }
     8 == c && 0 != (128 & a[0]) && (this.s = -1,
-        g > 0 && (this[this.t - 1] |= (1 << this.DB - g) - 1 << g)),
+            g > 0 && (this[this.t - 1] |= (1 << this.DB - g) - 1 << g)),
         this.clamp(),
         f && d.ZERO.subTo(this, this)
 }
@@ -126,16 +126,20 @@ function p(a) {
             return this.toRadix(a);
         b = 2
     }
-    var c, d = (1 << b) - 1, e = !1, f = "", g = this.t, h = this.DB - g * this.DB % b;
+    var c, d = (1 << b) - 1,
+        e = !1,
+        f = "",
+        g = this.t,
+        h = this.DB - g * this.DB % b;
     if (g-- > 0)
         for (h < this.DB && (c = this[g] >> h) > 0 && (e = !0,
-            f = i(c)); g >= 0;)
+                f = i(c)); g >= 0;)
             b > h ? (c = (this[g] & (1 << h) - 1) << b - h,
                 c |= this[--g] >> (h += this.DB - b)) : (c = this[g] >> (h -= b) & d,
-                    0 >= h && (h += this.DB,
-                        --g)),
-                c > 0 && (e = !0),
-                e && (f += i(c));
+                0 >= h && (h += this.DB,
+                    --g)),
+            c > 0 && (e = !0),
+            e && (f += i(c));
     return e ? f : "0"
 }
 
@@ -166,7 +170,7 @@ function s(a) {
 function t(a) {
     var b, c = 1;
     return 0 != (b = a >>> 16) && (a = b,
-        c += 16),
+            c += 16),
         0 != (b = a >> 8) && (a = b,
             c += 8),
         0 != (b = a >> 4) && (a = b,
@@ -200,10 +204,14 @@ function w(a, b) {
 }
 
 function x(a, b) {
-    var c, d = a % this.DB, e = this.DB - d, f = (1 << e) - 1, g = Math.floor(a / this.DB), h = this.s << d & this.DM;
+    var c, d = a % this.DB,
+        e = this.DB - d,
+        f = (1 << e) - 1,
+        g = Math.floor(a / this.DB),
+        h = this.s << d & this.DM;
     for (c = this.t - 1; c >= 0; --c)
         b[c + g + 1] = this[c] >> e | h,
-            h = (this[c] & f) << d;
+        h = (this[c] & f) << d;
     for (c = g - 1; c >= 0; --c)
         b[c] = 0;
     b[g] = h,
@@ -216,14 +224,14 @@ function y(a, b) {
     b.s = this.s;
     var c = Math.floor(a / this.DB);
     if (c >= this.t)
-        return void (b.t = 0);
-    var d = a % this.DB
-        , e = this.DB - d
-        , f = (1 << d) - 1;
+        return void(b.t = 0);
+    var d = a % this.DB,
+        e = this.DB - d,
+        f = (1 << d) - 1;
     b[0] = this[c] >> d;
     for (var g = c + 1; g < this.t; ++g)
         b[g - c - 1] |= (this[g] & f) << e,
-            b[g - c] = this[g] >> d;
+        b[g - c] = this[g] >> d;
     d > 0 && (b[this.t - c - 1] |= (this.s & f) << e),
         b.t = this.t - c,
         b.clamp()
@@ -232,19 +240,19 @@ function y(a, b) {
 function z(a, b) {
     for (var c = 0, d = 0, e = Math.min(a.t, this.t); e > c;)
         d += this[c] - a[c],
-            b[c++] = d & this.DM,
-            d >>= this.DB;
+        b[c++] = d & this.DM,
+        d >>= this.DB;
     if (a.t < this.t) {
         for (d -= a.s; c < this.t;)
             d += this[c],
-                b[c++] = d & this.DM,
-                d >>= this.DB;
+            b[c++] = d & this.DM,
+            d >>= this.DB;
         d += this.s
     } else {
         for (d += this.s; c < a.t;)
             d -= a[c],
-                b[c++] = d & this.DM,
-                d >>= this.DB;
+            b[c++] = d & this.DM,
+            d >>= this.DB;
         d -= a.s
     }
     b.s = 0 > d ? -1 : 0,
@@ -254,9 +262,9 @@ function z(a, b) {
 }
 
 function A(a, b) {
-    var c = this.abs()
-        , e = a.abs()
-        , f = c.t;
+    var c = this.abs(),
+        e = a.abs(),
+        f = c.t;
     for (b.t = f + e.t; --f >= 0;)
         b[f] = 0;
     for (f = 0; f < e.t; ++f)
@@ -285,25 +293,25 @@ function C(a, b, c) {
         var g = this.abs();
         if (g.t < f.t)
             return null != b && b.fromInt(0),
-                void (null != c && this.copyTo(c));
+                void(null != c && this.copyTo(c));
         null == c && (c = e());
-        var h = e()
-            , i = this.s
-            , j = a.s
-            , k = this.DB - t(f[f.t - 1]);
+        var h = e(),
+            i = this.s,
+            j = a.s,
+            k = this.DB - t(f[f.t - 1]);
         k > 0 ? (f.lShiftTo(k, h),
             g.lShiftTo(k, c)) : (f.copyTo(h),
-                g.copyTo(c));
-        var l = h.t
-            , m = h[l - 1];
+            g.copyTo(c));
+        var l = h.t,
+            m = h[l - 1];
         if (0 != m) {
-            var n = m * (1 << this.F1) + (l > 1 ? h[l - 2] >> this.F2 : 0)
-                , o = this.FV / n
-                , p = (1 << this.F1) / n
-                , q = 1 << this.F2
-                , r = c.t
-                , s = r - l
-                , u = null == b ? e() : b;
+            var n = m * (1 << this.F1) + (l > 1 ? h[l - 2] >> this.F2 : 0),
+                o = this.FV / n,
+                p = (1 << this.F1) / n,
+                q = 1 << this.F2,
+                r = c.t,
+                s = r - l,
+                u = null == b ? e() : b;
             for (h.dlShiftTo(s, u),
                 c.compareTo(u) >= 0 && (c[c.t++] = 1,
                     c.subTo(u, c)),
@@ -318,7 +326,7 @@ function C(a, b, c) {
                         c.subTo(u, c)
             }
             null != b && (c.drShiftTo(l, b),
-                i != j && d.ZERO.subTo(b, b)),
+                    i != j && d.ZERO.subTo(b, b)),
                 c.t = l,
                 c.clamp(),
                 k > 0 && c.rShiftTo(k, c),
@@ -402,12 +410,12 @@ function O(a) {
     for (; a.t <= this.mt2;)
         a[a.t++] = 0;
     for (var b = 0; b < this.m.t; ++b) {
-        var c = 32767 & a[b]
-            , d = c * this.mpl + ((c * this.mph + (a[b] >> 15) * this.mpl & this.um) << 15) & a.DM;
+        var c = 32767 & a[b],
+            d = c * this.mpl + ((c * this.mph + (a[b] >> 15) * this.mpl & this.um) << 15) & a.DM;
         for (c = b + this.m.t,
             a[c] += this.m.am(0, d, a, b, 0, this.m.t); a[c] >= a.DV;)
             a[c] -= a.DV,
-                a[++c]++
+            a[++c]++
     }
     a.clamp(),
         a.drShiftTo(this.m.t, a),
@@ -431,10 +439,10 @@ function R() {
 function S(a, b) {
     if (a > 4294967295 || 1 > a)
         return d.ONE;
-    var c = e()
-        , f = e()
-        , g = b.convert(this)
-        , h = t(a) - 1;
+    var c = e(),
+        f = e(),
+        g = b.convert(this),
+        h = t(a) - 1;
     for (g.copyTo(c); --h >= 0;)
         if (b.sqrTo(c, f),
             (a & 1 << h) > 0)
@@ -466,9 +474,9 @@ function V(a) {
     for (c = 0,
         b = 0; 256 > b; ++b)
         c = c + this.S[b] + a[b % a.length] & 255,
-            d = this.S[b],
-            this.S[b] = this.S[c],
-            this.S[c] = d;
+        d = this.S[b],
+        this.S[b] = this.S[c],
+        this.S[c] = d;
     this.i = 0,
         this.j = 0
 }
@@ -517,8 +525,7 @@ function _(a) {
         a[b] = $()
 }
 
-function ab() {
-}
+function ab() {}
 
 function bb(a, b) {
     return new d(a, b)
@@ -532,8 +539,8 @@ function cb(a, b) {
         var f = a.charCodeAt(e--);
         128 > f ? c[--b] = f : f > 127 && 2048 > f ? (c[--b] = 63 & f | 128,
             c[--b] = f >> 6 | 192) : (c[--b] = 63 & f | 128,
-                c[--b] = f >> 6 & 63 | 128,
-                c[--b] = f >> 12 | 224)
+            c[--b] = f >> 6 & 63 | 128,
+            c[--b] = f >> 12 | 224)
     }
     c[--b] = 0;
     for (var g = new ab, h = new Array; b > 2;) {
@@ -577,11 +584,12 @@ function gb(a) {
     return 0 == (1 & d.length) ? d : "0" + d
 }
 
-var hb, ib = 0xdeadbeefcafe, jb = 15715070 == (16777215 & ib);
+var hb, ib = 0xdeadbeefcafe,
+    jb = 15715070 == (16777215 & ib);
 jb && "Microsoft Internet Explorer" == navigator.appName ? (d.prototype.am = g,
-    hb = 30) : jb && "Netscape" != navigator.appName ? (d.prototype.am = f,
+        hb = 30) : jb && "Netscape" != navigator.appName ? (d.prototype.am = f,
         hb = 26) : (d.prototype.am = h,
-            hb = 28),
+        hb = 28),
     d.prototype.DB = hb,
     d.prototype.DM = (1 << hb) - 1,
     d.prototype.DV = 1 << hb;
@@ -589,7 +597,8 @@ var kb = 52;
 d.prototype.FV = Math.pow(2, kb),
     d.prototype.F1 = kb - hb,
     d.prototype.F2 = 2 * hb - kb;
-var lb, mb, nb = "0123456789abcdefghijklmnopqrstuvwxyz", ob = new Array;
+var lb, mb, nb = "0123456789abcdefghijklmnopqrstuvwxyz",
+    ob = new Array;
 for (lb = "0".charCodeAt(0),
     mb = 0; 9 >= mb; ++mb)
     ob[lb++] = mb;
@@ -653,8 +662,8 @@ if (null == qb) {
     }
     for (; sb > rb;)
         tb = Math.floor(65536 * Math.random()),
-            qb[rb++] = tb >>> 8,
-            qb[rb++] = 255 & tb;
+        qb[rb++] = tb >>> 8,
+        qb[rb++] = 255 & tb;
     rb = 0,
         Z()
 }
@@ -665,7 +674,15 @@ ab.prototype.nextBytes = _,
 
 function getPw(password) {
     var c = new db();
-    var a = { "status": 2000, "message": "", "header": {}, "result": { "publicExponent": "010001", "modulus": "00833c4af965ff7a8409f8b5d5a83d87f2f19d7c1eb40dc59a98d2346cbb145046b2c6facc25b5cc363443f0f7ebd9524b7c1e1917bf7d849212339f6c1d3711b115ecb20f0c89fc2182a985ea28cbb4adf6a321ff7e715ba9b8d7261d1c140485df3b705247a70c28c9068caabbedbf9510dada6d13d99e57642b853a73406817" } };
+    var a = {
+        "status": 2000,
+        "message": "",
+        "header": {},
+        "result": {
+            "publicExponent": "010001",
+            "modulus": "00833c4af965ff7a8409f8b5d5a83d87f2f19d7c1eb40dc59a98d2346cbb145046b2c6facc25b5cc363443f0f7ebd9524b7c1e1917bf7d849212339f6c1d3711b115ecb20f0c89fc2182a985ea28cbb4adf6a321ff7e715ba9b8d7261d1c140485df3b705247a70c28c9068caabbedbf9510dada6d13d99e57642b853a73406817"
+        }
+    };
     c.setPublic(a.result.modulus, a.result.publicExponent);
     var res = c.encrypt(password);
     // console.log(res);

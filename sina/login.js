@@ -1,3 +1,5 @@
+navigator = {};
+
 function bt(a) {
     var b = bp(a, this.n.bitLength() + 7 >> 3);
     if (b == null)
@@ -8,9 +10,11 @@ function bt(a) {
     var d = c.toString(16);
     return (d.length & 1) == 0 ? d : "0" + d
 }
+
 function bs(a) {
     return a.modPowInt(this.e, this.n)
 }
+
 function br(a, b) {
     if (a != null && b != null && a.length > 0 && b.length > 0) {
         this.n = bm(a, 16);
@@ -18,6 +22,7 @@ function br(a, b) {
     } else
         alert("Invalid RSA public key")
 }
+
 function bq() {
     this.n = null;
     this.e = 0;
@@ -28,13 +33,14 @@ function bq() {
     this.dmq1 = null;
     this.coeff = null
 }
+
 function bp(a, b) {
     if (b < a.length + 11) {
         alert("Message too long for RSA");
         return null
     }
-    var c = []
-      , e = a.length - 1;
+    var c = [],
+        e = a.length - 1;
     while (e >= 0 && b > 0) {
         var f = a.charCodeAt(e--);
         if (f < 128)
@@ -49,8 +55,8 @@ function bp(a, b) {
         }
     }
     c[--b] = 0;
-    var g = new bl
-      , h = [];
+    var g = new bl,
+        h = [];
     while (b > 2) {
         h[0] = 0;
         while (h[0] == 0)
@@ -61,27 +67,33 @@ function bp(a, b) {
     c[--b] = 0;
     return new d(c)
 }
+
 function bo(a) {
     return a < 16 ? "0" + a.toString(16) : a.toString(16)
 }
+
 function bn(a, b) {
-    var c = ""
-      , d = 0;
+    var c = "",
+        d = 0;
     while (d + b < a.length) {
         c += a.substring(d, d + b) + "\n";
         d += b
     }
     return c + a.substring(d, a.length)
 }
+
 function bm(a, b) {
-    return new d(a,b)
+    return new d(a, b)
 }
+
 function bl() {}
+
 function bk(a) {
     var b;
     for (b = 0; b < a.length; ++b)
         a[b] = bj()
 }
+
 function bj() {
     if (bc == null) {
         bg();
@@ -93,9 +105,11 @@ function bj() {
     }
     return bc.next()
 }
+
 function bg() {
     bf((new Date).getTime())
 }
+
 function bf(a) {
     bd[be++] ^= a & 255;
     bd[be++] ^= a >> 8 & 255;
@@ -103,9 +117,11 @@ function bf(a) {
     bd[be++] ^= a >> 24 & 255;
     be >= bb && (be -= bb)
 }
+
 function ba() {
     return new Z
 }
+
 function _() {
     var a;
     this.i = this.i + 1 & 255;
@@ -115,6 +131,7 @@ function _() {
     this.S[this.j] = a;
     return this.S[a + this.S[this.i] & 255]
 }
+
 function $(a) {
     var b, c, d;
     for (b = 0; b < 256; ++b)
@@ -129,23 +146,26 @@ function $(a) {
     this.i = 0;
     this.j = 0
 }
+
 function Z() {
     this.i = 0;
     this.j = 0;
     this.S = []
 }
+
 function Y(a, b) {
     var c;
     a < 256 || b.isEven() ? c = new J(b) : c = new Q(b);
     return this.exp(a, c)
 }
+
 function X(a, b) {
     if (a > 4294967295 || a < 1)
         return d.ONE;
-    var c = e()
-      , f = e()
-      , g = b.convert(this)
-      , h = y(a) - 1;
+    var c = e(),
+        f = e(),
+        g = b.convert(this),
+        h = y(a) - 1;
     g.copyTo(c);
     while (--h >= 0) {
         b.sqrTo(c, f);
@@ -159,23 +179,27 @@ function X(a, b) {
     }
     return b.revert(c)
 }
+
 function W() {
     return (this.t > 0 ? this[0] & 1 : this.s) == 0
 }
+
 function V(a, b, c) {
     a.multiplyTo(b, c);
     this.reduce(c)
 }
+
 function U(a, b) {
     a.squareTo(b);
     this.reduce(b)
 }
+
 function T(a) {
     while (a.t <= this.mt2)
         a[a.t++] = 0;
     for (var b = 0; b < this.m.t; ++b) {
-        var c = a[b] & 32767
-          , d = c * this.mpl + ((c * this.mph + (a[b] >> 15) * this.mpl & this.um) << 15) & a.DM;
+        var c = a[b] & 32767,
+            d = c * this.mpl + ((c * this.mph + (a[b] >> 15) * this.mpl & this.um) << 15) & a.DM;
         c = b + this.m.t;
         a[c] += this.m.am(0, d, a, b, 0, this.m.t);
         while (a[c] >= a.DV) {
@@ -187,12 +211,14 @@ function T(a) {
     a.drShiftTo(this.m.t, a);
     a.compareTo(this.m) >= 0 && a.subTo(this.m, a)
 }
+
 function S(a) {
     var b = e();
     a.copyTo(b);
     this.reduce(b);
     return b
 }
+
 function R(a) {
     var b = e();
     a.abs().dlShiftTo(this.m.t, b);
@@ -200,6 +226,7 @@ function R(a) {
     a.s < 0 && b.compareTo(d.ZERO) > 0 && this.m.subTo(b, b);
     return b
 }
+
 function Q(a) {
     this.m = a;
     this.mp = a.invDigit();
@@ -208,6 +235,7 @@ function Q(a) {
     this.um = (1 << a.DB - 15) - 1;
     this.mt2 = 2 * a.t
 }
+
 function P() {
     if (this.t < 1)
         return 0;
@@ -221,32 +249,40 @@ function P() {
     b = b * (2 - a * b % this.DV) % this.DV;
     return b > 0 ? this.DV - b : -b
 }
+
 function O(a, b) {
     a.squareTo(b);
     this.reduce(b)
 }
+
 function N(a, b, c) {
     a.multiplyTo(b, c);
     this.reduce(c)
 }
+
 function M(a) {
     a.divRemTo(this.m, null, a)
 }
+
 function L(a) {
     return a
 }
+
 function K(a) {
     return a.s < 0 || a.compareTo(this.m) >= 0 ? a.mod(this.m) : a
 }
+
 function J(a) {
     this.m = a
 }
+
 function I(a) {
     var b = e();
     this.abs().divRemTo(a, null, b);
     this.s < 0 && b.compareTo(d.ZERO) > 0 && a.subTo(b, b);
     return b
 }
+
 function H(a, b, c) {
     var f = a.abs();
     if (!(f.t <= 0)) {
@@ -257,10 +293,10 @@ function H(a, b, c) {
             return
         }
         c == null && (c = e());
-        var h = e()
-          , i = this.s
-          , j = a.s
-          , k = this.DB - y(f[f.t - 1]);
+        var h = e(),
+            i = this.s,
+            j = a.s,
+            k = this.DB - y(f[f.t - 1]);
         if (k > 0) {
             f.lShiftTo(k, h);
             g.lShiftTo(k, c)
@@ -268,17 +304,17 @@ function H(a, b, c) {
             f.copyTo(h);
             g.copyTo(c)
         }
-        var l = h.t
-          , m = h[l - 1];
+        var l = h.t,
+            m = h[l - 1];
         if (m == 0)
             return;
-        var n = m * (1 << this.F1) + (l > 1 ? h[l - 2] >> this.F2 : 0)
-          , o = this.FV / n
-          , p = (1 << this.F1) / n
-          , q = 1 << this.F2
-          , r = c.t
-          , s = r - l
-          , t = b == null ? e() : b;
+        var n = m * (1 << this.F1) + (l > 1 ? h[l - 2] >> this.F2 : 0),
+            o = this.FV / n,
+            p = (1 << this.F1) / n,
+            q = 1 << this.F2,
+            r = c.t,
+            s = r - l,
+            t = b == null ? e() : b;
         h.dlShiftTo(s, t);
         if (c.compareTo(t) >= 0) {
             c[c.t++] = 1;
@@ -307,9 +343,10 @@ function H(a, b, c) {
         i < 0 && d.ZERO.subTo(c, c)
     }
 }
+
 function G(a) {
-    var b = this.abs()
-      , c = a.t = 2 * b.t;
+    var b = this.abs(),
+        c = a.t = 2 * b.t;
     while (--c >= 0)
         a[c] = 0;
     for (c = 0; c < b.t - 1; ++c) {
@@ -323,10 +360,11 @@ function G(a) {
     a.s = 0;
     a.clamp()
 }
+
 function F(a, b) {
-    var c = this.abs()
-      , e = a.abs()
-      , f = c.t;
+    var c = this.abs(),
+        e = a.abs(),
+        f = c.t;
     b.t = f + e.t;
     while (--f >= 0)
         b[f] = 0;
@@ -336,10 +374,11 @@ function F(a, b) {
     b.clamp();
     this.s != a.s && d.ZERO.subTo(b, b)
 }
+
 function E(a, b) {
-    var c = 0
-      , d = 0
-      , e = Math.min(a.t, this.t);
+    var c = 0,
+        d = 0,
+        e = Math.min(a.t, this.t);
     while (c < e) {
         d += this[c] - a[c];
         b[c++] = d & this.DM;
@@ -367,15 +406,16 @@ function E(a, b) {
     b.t = c;
     b.clamp()
 }
+
 function D(a, b) {
     b.s = this.s;
     var c = Math.floor(a / this.DB);
     if (c >= this.t)
         b.t = 0;
     else {
-        var d = a % this.DB
-          , e = this.DB - d
-          , f = (1 << d) - 1;
+        var d = a % this.DB,
+            e = this.DB - d,
+            f = (1 << d) - 1;
         b[0] = this[c] >> d;
         for (var g = c + 1; g < this.t; ++g) {
             b[g - c - 1] |= (this[g] & f) << e;
@@ -386,8 +426,14 @@ function D(a, b) {
         b.clamp()
     }
 }
+
 function C(a, b) {
-    var c = a % this.DB, d = this.DB - c, e = (1 << d) - 1, f = Math.floor(a / this.DB), g = this.s << c & this.DM, h;
+    var c = a % this.DB,
+        d = this.DB - c,
+        e = (1 << d) - 1,
+        f = Math.floor(a / this.DB),
+        g = this.s << c & this.DM,
+        h;
     for (h = this.t - 1; h >= 0; --h) {
         b[h + f + 1] = this[h] >> d | g;
         g = (this[h] & e) << c
@@ -399,12 +445,14 @@ function C(a, b) {
     b.s = this.s;
     b.clamp()
 }
+
 function B(a, b) {
     for (var c = a; c < this.t; ++c)
         b[c - a] = this[c];
     b.t = Math.max(this.t - a, 0);
     b.s = this.s
 }
+
 function A(a, b) {
     var c;
     for (c = this.t - 1; c >= 0; --c)
@@ -414,11 +462,14 @@ function A(a, b) {
     b.t = this.t + a;
     b.s = this.s
 }
+
 function z() {
     return this.t <= 0 ? 0 : this.DB * (this.t - 1) + y(this[this.t - 1] ^ this.s & this.DM)
 }
+
 function y(a) {
-    var b = 1, c;
+    var b = 1,
+        c;
     if ((c = a >>> 16) != 0) {
         a = c;
         b += 16
@@ -441,6 +492,7 @@ function y(a) {
     }
     return b
 }
+
 function x(a) {
     var b = this.s - a.s;
     if (b != 0)
@@ -454,14 +506,17 @@ function x(a) {
             return b;
     return 0
 }
+
 function w() {
     return this.s < 0 ? this.negate() : this
 }
+
 function v() {
     var a = e();
     d.ZERO.subTo(this, a);
     return a
 }
+
 function u(a) {
     if (this.s < 0)
         return "-" + this.negate().toString(a);
@@ -478,7 +533,11 @@ function u(a) {
         b = 2;
     else
         return this.toRadix(a);
-    var c = (1 << b) - 1, d, e = !1, f = "", g = this.t, h = this.DB - g * this.DB % b;
+    var c = (1 << b) - 1,
+        d, e = !1,
+        f = "",
+        g = this.t,
+        h = this.DB - g * this.DB % b;
     if (g-- > 0) {
         if (h < this.DB && (d = this[g] >> h) > 0) {
             e = !0;
@@ -501,11 +560,13 @@ function u(a) {
     }
     return e ? f : "0"
 }
+
 function t() {
     var a = this.s & this.DM;
     while (this.t > 0 && this[this.t - 1] == a)
         --this.t
 }
+
 function s(a, b) {
     var c;
     if (b == 16)
@@ -526,9 +587,9 @@ function s(a, b) {
     }
     this.t = 0;
     this.s = 0;
-    var e = a.length
-      , f = !1
-      , g = 0;
+    var e = a.length,
+        f = !1,
+        g = 0;
     while (--e >= 0) {
         var h = c == 8 ? a[e] & 255 : o(a, e);
         if (h < 0) {
@@ -553,55 +614,63 @@ function s(a, b) {
     this.clamp();
     f && d.ZERO.subTo(this, this)
 }
+
 function r(a) {
     var b = e();
     b.fromInt(a);
     return b
 }
+
 function q(a) {
     this.t = 1;
     this.s = a < 0 ? -1 : 0;
     a > 0 ? this[0] = a : a < -1 ? this[0] = a + DV : this.t = 0
 }
+
 function p(a) {
     for (var b = this.t - 1; b >= 0; --b)
         a[b] = this[b];
     a.t = this.t;
     a.s = this.s
 }
+
 function o(a, b) {
     var c = k[a.charCodeAt(b)];
     return c == null ? -1 : c
 }
+
 function n(a) {
     return j.charAt(a)
 }
+
 function h(a, b, c, d, e, f) {
-    var g = b & 16383
-      , h = b >> 14;
+    var g = b & 16383,
+        h = b >> 14;
     while (--f >= 0) {
-        var i = this[a] & 16383
-          , j = this[a++] >> 14
-          , k = h * i + j * g;
+        var i = this[a] & 16383,
+            j = this[a++] >> 14,
+            k = h * i + j * g;
         i = g * i + ((k & 16383) << 14) + c[d] + e;
         e = (i >> 28) + (k >> 14) + h * j;
         c[d++] = i & 268435455
     }
     return e
 }
+
 function g(a, b, c, d, e, f) {
-    var g = b & 32767
-      , h = b >> 15;
+    var g = b & 32767,
+        h = b >> 15;
     while (--f >= 0) {
-        var i = this[a] & 32767
-          , j = this[a++] >> 15
-          , k = h * i + j * g;
+        var i = this[a] & 32767,
+            j = this[a++] >> 15,
+            k = h * i + j * g;
         i = g * i + ((k & 32767) << 15) + c[d] + (e & 1073741823);
         e = (i >>> 30) + (k >>> 15) + h * j + (e >>> 30);
         c[d++] = i & 1073741823
     }
     return e
 }
+
 function f(a, b, c, d, e, f) {
     while (--f >= 0) {
         var g = b * this[a++] + c[d] + e;
@@ -610,13 +679,16 @@ function f(a, b, c, d, e, f) {
     }
     return e
 }
+
 function e() {
     return new d(null)
 }
+
 function d(a, b, c) {
     a != null && ("number" == typeof a ? this.fromNumber(a, b, c) : b == null && "string" != typeof a ? this.fromString(a, 256) : this.fromString(a, b))
 }
-var a, b = 0xdeadbeefcafe, c = (b & 16777215) == 15715070;
+var a, b = 0xdeadbeefcafe,
+    c = (b & 16777215) == 15715070;
 if (c && navigator.appName == "Microsoft Internet Explorer") {
     d.prototype.am = g;
     a = 30
@@ -634,7 +706,9 @@ var i = 52;
 d.prototype.FV = Math.pow(2, i);
 d.prototype.F1 = i - a;
 d.prototype.F2 = 2 * a - i;
-var j = "0123456789abcdefghijklmnopqrstuvwxyz", k = [], l, m;
+var j = "0123456789abcdefghijklmnopqrstuvwxyz",
+    k = [],
+    l, m;
 l = "0".charCodeAt(0);
 for (m = 0; m <= 9; ++m)
     k[l++] = m;
@@ -680,7 +754,8 @@ d.ZERO = r(0);
 d.ONE = r(1);
 Z.prototype.init = $;
 Z.prototype.next = _;
-var bb = 256, bc, bd, be;
+var bb = 256,
+    bc, bd, be;
 if (bd == null) {
     bd = [];
     be = 0;
@@ -703,3 +778,25 @@ bq.prototype.doPublic = bs;
 bq.prototype.setPublic = br;
 bq.prototype.encrypt = bt;
 this.RSAKey = bq
+
+function getPw(password, me) {
+    var f = new bq;
+    f.setPublic(me.pubkey, "10001");
+    res = f.encrypt([me.servertime, me.nonce].join("\t") + "\n" + password)
+    console.log(res);
+    return res
+}
+
+var me = {
+    "retcode": 0,
+    "servertime": 1565920051,
+    "pcid": "gz-fe867362e20c8fb663d899d61328ab525aed",
+    "nonce": "SUTAO4",
+    "pubkey": "EB2A38568661887FA180BDDB5CABD5F21C7BFD59C090CB2D245A87AC253062882729293E5506350508E7F9AA3BB77F4333231490F915F6D63C55FE2F08A49B353F444AD3993CACC02DB784ABBB8E42A9B1BBFFFB38BE18D78E87A0E41B9B8F73A928EE0CCEE1F6739884B9777E4FE9E88A1BBE495927AC4A799B3181D6442443",
+    "rsakv": "1330428213",
+    "exectime": 17
+};
+
+// 账号 base64 编码 
+// python方式 base64.b64encode(user.encode()).decode()
+// getPw('123456789', me);

@@ -5,8 +5,8 @@ import requests
 from settings import fang_pw, user
 
 
-def login():
-    js = execjs.compile(open('fang/login.js', 'r+', encoding='utf-8').read())
+def login(file='fang/login.js'):
+    js = execjs.compile(open(file, 'r+', encoding='utf-8').read())
 
     headers = {
         'Host': 'passport.fang.com',
@@ -29,17 +29,10 @@ def login():
         'pwd': js.call('getPw', fang_pw),
         'AutoLogin': '0',
     })
-    # data = {
-    #     'uid': str(user),
-    #     'enpassword': js.call('getPw', fang_pw),
-    #     'Service': 'soufun-passport-web',
-    #     'AutoLogin': '0',
-    # }
-    # print(data)
     url = 'https://passport.fang.com/login.api'
     res = requests.post(url, headers=headers, data=data, verify=True)
     print(res.text)
 
 
 if __name__ == '__main__':
-    login()
+    login(file='login.js')

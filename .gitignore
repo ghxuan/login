@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 settings.py
+test.py
 .idea/
 .vscode/
 venv/

@@ -5,8 +5,8 @@ import requests
 from settings import migu_pw, user
 
 
-def login():
-    js = execjs.compile(open('migu/login.js', 'r+', encoding='utf-8').read())
+def login(file='migu/login.js'):
+    js = execjs.compile(open(file, 'r+', encoding='utf-8').read())
 
     headers = {
         'Host': 'passport.migu.cn',
@@ -25,8 +25,7 @@ def login():
     url = 'https://passport.migu.cn/authn'
     res = requests.post(url, headers=headers, data=data)
     print(res.text)
-    print(res.json())
 
 
 if __name__ == '__main__':
-    login()
+    login(file='login.js')

@@ -931,8 +931,7 @@ var navigator = {};
 function getPw(password, me) {
     var RSAKey = new sinaSSOEncoder.RSAKey();
     RSAKey.setPublic(me.pubkey, "10001");
-    password = RSAKey.encrypt([me.servertime, me.nonce].join("\t") + "\n" + password);
-    console.log(password);
+    password = RSAKey.encrypt([me.servertime, me.nonce].join("\t") + "\n" + password)
     return password
 }
 
@@ -948,4 +947,5 @@ var me = {
 
 // 账号 base64 编码 
 // python方式 base64.b64encode(user.encode()).decode()
-// getPw('123456789', me);
+
+// console.log(getPw('123456789', me))

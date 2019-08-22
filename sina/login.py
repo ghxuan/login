@@ -27,24 +27,23 @@ def login(file='sina/login.js'):
     res = requests.get(url, headers, verify=True)
     print(url)
     # print(res.text)
-    res = loads(re.search('{.*?}', res.text).group())
-    print(res)
+    temp = loads(re.search('{.*?}', res.text).group())
+    print(temp)
+    data = {
+        'entry': 'account', 'gateway': '1', 'from': 'null', 'savestate': '0', 'useticket': '0', 'pagerefer': '',
+        'vsnf': '1', 'service': 'account', 'pwencode': 'rsa2', 'sr': '1920*1080',
+        'su': su,
+        'servertime': temp.get('servertime'),
+        'nonce': temp.get('nonce'),
+        'rsakv': temp.get('rsakv'),
+        'sp': '',
+        'encoding': 'UTF-8', 'cdult': '3', 'domain': 'sina.com.cn', 'prelt': '30', 'returntype': 'TEXT'}
     retcode = 0
     tim = 1
     while True:
-        sp = js.call('getPw', sina_pw, res)
-        print(sp)
         headers['Content-Type'] = 'application/x-www-form-urlencoded'
-        data = {
-            'entry': 'account', 'gateway': '1', 'from': 'null', 'savestate': '0', 'useticket': '0', 'pagerefer': '',
-            'vsnf': '1', 'service': 'account', 'pwencode': 'rsa2',
-            'su': su,
-            'servertime': res.get('servertime'),
-            'nonce': res.get('nonce'),
-            'rsakv': res.get('rsakv'),
-            'sp': sp,
-            'sr': '1920*1080', 'encoding': 'UTF-8', 'cdult': '3', 'domain': 'sina.com.cn', 'prelt': '30',
-            'returntype': 'TEXT'}
+        data['sp'] = js.call('getPw', sina_pw, temp)
+        print(data['sp'])
         url = f'https://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.4.15)&_={int(time() * 1000)}'
         print(url)
         res = requests.post(url, headers=headers, data=data, verify=True)

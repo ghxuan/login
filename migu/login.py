@@ -23,7 +23,8 @@ def login(file='migu/login.js'):
         'enpassword': js.call('getPw', migu_pw),
     }
     url = 'https://passport.migu.cn/authn'
-    res = requests.post(url, headers=headers, data=data)
+    res = requests.post(url, headers=headers, data=data, verify=True)
+    # res = requests.post(url, headers=headers, data=data, verify=False)
     print(res.text)
 
 

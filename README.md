@@ -29,3 +29,7 @@ settings.py 密码等变量 <br>
 
 ## 三、新浪
 [sina](https://github.com/ghxuan/login/tree/master/sina) 文件夹是新浪模拟登录，解析登录页面加密js代码，操作运行js代码处理密码加密，并发送请求。<br>
+
+## 三、网易邮箱
+[mail163](https://github.com/ghxuan/login/tree/master/mail163) 文件夹是网易邮箱模拟登录，解析登录页面加密js代码，操作运行js代码处理密码加密，并发送请求。<br>
+

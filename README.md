@@ -17,9 +17,9 @@ pip install -r requirements.txt
 ```
 2、文件了解<br>
 
-venv\ 虚拟环境 <br>
-.gitignore git禁止上传 <br>
-settings.py 密码等变量 <br>
+[venv](https://github.com/ghxuan/login/tree/master/venv) 虚拟环境 <br>
+[.gitignore](https://github.com/ghxuan/login/tree/master/.gitignore) git禁止上传 <br>
+[settings.py](https://github.com/ghxuan/login/tree/master/settings.py) 密码等变量 <br>
 
 ## 一、咪咕音乐
 [migu](https://github.com/ghxuan/login/tree/master/migu) 文件夹是咪咕音乐模拟登录，解析登录页面加密js代码，操作运行js代码处理密码加密，并发送请求。

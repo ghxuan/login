@@ -49,7 +49,8 @@ def login(file='mail163/login.js'):
         "tk": res.get('tk', ''),
         "pwdKeyUp": 1, "channel": 0,
         "topURL": topURL,
-        "rtid": rtid}
+        "rtid": rtid
+    }
     headers = {
         'Content-Type': 'application/json',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '

@@ -24,7 +24,7 @@ def login(file='sina/login.js'):
     su = base64.b64encode(user.encode()).decode()
     url = f'https://login.sina.com.cn/sso/prelogin.php?entry=account&callback=sinaSSOController.preloginCallBack&' \
         f'su={su}&rsakt=mod&client=ssologin.js(v1.4.15)&_={int(time() * 1000)}'
-    res = requests.get(url, headers, verify=True)
+    res = requests.get(url, headers=headers, verify=True)
     print(url)
     # print(res.text)
     temp = loads(re.search('{.*?}', res.text).group())

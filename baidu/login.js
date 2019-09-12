@@ -1,5 +1,7 @@
-// post https://passport.baidu.com/v2/?login 
+// from loginv4_tangram_1cf0e40.js 
+// 正则 (passport=passport\|\|\{\}.*?passport\.lib\.RSAExport\.JSEncrypt;)
 // window.ASN1 和 window.Base64 去掉 'window.'
+// getGid  from  this.guideRandom  loginv4_tangram_1cf0e40.js
 var passport = {},
     navigator = {},
     window = {},
@@ -1841,6 +1843,19 @@ function getPw(password, t) {
     return res
 }
 
+function getGid() {
+    return "xxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (e) {
+        var t = 16 * Math.random() | 0,
+            n = "x" === e ? t : 3 & t | 8;
+        return n.toString(16)
+    }).toUpperCase()
+}
+
+function getCall(){
+    var h = "bd__cbs__";
+    return h + Math.floor(Math.random() * 2147483648).toString(36)
+}
+
 key = {
     "errno": '0',
     "msg": '',
@@ -1850,3 +1865,5 @@ key = {
 }
 
 // console.log(getPw('123456789', key))
+// console.log(getGid())
+// console.log(getCall())

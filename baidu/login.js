@@ -1839,8 +1839,7 @@ passport = passport || {}, passport.lib = passport.lib || {}, passport.lib.RSAEx
 function getPw(password, t) {
     var RSA = new passport.lib.RSA;
     RSA.setKey(t.pubkey);
-    res = RSA.encrypt(password)
-    return res
+    return RSA.encrypt(password)
 }
 
 function getGid() {
@@ -1851,12 +1850,12 @@ function getGid() {
     }).toUpperCase()
 }
 
-function getCall(){
+function getCall() {
     var h = "bd__cbs__";
     return h + Math.floor(Math.random() * 2147483648).toString(36)
 }
 
-key = {
+var key = {
     "errno": '0',
     "msg": '',
     "pubkey": '-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFHastGuIagS4m8MEkXiCLzgj0\ndQ35QNkjMR36aKH3yQk1TcjPudVP35OfyZ1Q2HPRh+x5UzJqHN3T73WB+2HqYX0a\nR1EBW4oT+d\/xwqApcDtvsDrT\/58onCULuNBy6aC4pV4wp0t543qkxnyQ7dUJGK70\n8amH\/0t+vYTLF+JnnQIDAQAB\n-----END PUBLIC KEY-----\n',

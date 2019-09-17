@@ -48,6 +48,7 @@ def login(file='baidu/login.js'):
     print(key)
     password = js.call('getPw', pw, temp)
     print(password)
+    url = 'https://passport.baidu.com/v2/api/?login'
 
 
 if __name__ == '__main__':

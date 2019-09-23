@@ -20,7 +20,7 @@ function i(e) {
     return n(e)
 }
 
-function getTk() {
+function getAk() {
     var t = {};
     t.ak = '1e3f2dd1c81f2075171a547893391274';
     var f = i({

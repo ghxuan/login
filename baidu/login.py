@@ -39,6 +39,7 @@ def login(file='baidu/login.js'):
     temp = loads(re.search(r'\(({.*})\)', res.text.replace("'", '"')).group(1))
     token = temp['data']['token']
     print(token)
+
     callback = js.call('getCall')
     url = f'https://passport.baidu.com/v2/getpublickey?token={token}&tpl=pp&apiver=v3&tt={int(time() * 1000)}' \
         f'&gid={gid}&loginversion=v4&traceid=&callback={callback}'
@@ -48,6 +49,29 @@ def login(file='baidu/login.js'):
     print(key)
     password = js.call('getPw', pw, temp)
     print(password)
+    data = {
+        'staticpage': 'https%3A%2F%2Fpassport.baidu.com%2Fstatic%2Fpasspc-account%2Fhtml%2Fv3Jump.html',
+        'charset': 'UTF-8',
+        'token': token,
+        'tpl': 'pp', 'subpro': '', 'apiver': 'v3',
+        'tt': int(time() * 1000),
+        'codestring': '', 'safeflg': '0', 'u': 'https%3A%2F%2Fpassport.baidu.com%2F',
+        'isPhone': '', 'detect': '1',
+        'gid': gid,
+        'quick_user': '0',
+        'logintype': 'basicLogin', 'logLoginType': 'pc_loginBasic', 'idc': '', 'loginmerge': 'true', 'mkey': '',
+        'username': user,
+        'password': password,
+        'rsakey': key, 
+        'crypttype': '12', 'ppui_logintime': '22211', 'countrycode': '',
+        'fp_uid': '', 'fp_info': '', 'loginversion': 'v4', 'supportdv': '1',
+        'ds': 0,
+        'tk': 0,
+        'dv': 0,
+        'fuid': 0,
+        'traceid': 'D28F6B01', 'callback': 'parent.bd__pcbs__ir2zt8'
+    }
+
     url = 'https://passport.baidu.com/v2/api/?login'
 
 
